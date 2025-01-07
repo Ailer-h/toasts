@@ -1,6 +1,9 @@
 
+
 ## This project is a work in progress. If you want to contact me, do it at XXX.
 This is a small project that I put together to make custom toasts using JavaScript and JQuery only. It was born while I was working on another project, which you can find [here](https://github.com/Ailer-h/library_of_alexandria).
+
+Test this project at [https://ailer-h.github.io/toasts/](https://ailer-h.github.io/toasts/).
 
 ## Used technologies.
 
