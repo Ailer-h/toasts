@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+*{
+    font-family: "Ubuntu", Arial, Helvetica, sans-serif;
+}
+
+body {
+    height: 90vh;
+    background-color: #121212;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    gap: 3em;
+}
+
+button{
+    background-color: #0d6efd;
+    color: white;
+    font-size: 1.5em;
+    padding: .5em;
+    border: none;
+    border-radius: .5em;
+
+    cursor: pointer;
+}
+
+button:disabled{
+    filter: brightness(.8);
+}
+
+.buttons{
+    display: flex;
+    gap: 1em;
+}
+
+.settings{
+    display: flex;
+    gap: 3em;
+}
+
+.settings .colors{
+    display: flex;
+    align-items: center;
+    gap: .5em;
+}
+
+.settings input[type='color']{
+    height: 100%;
+    display: none;
+}
+
+.radio{
+    display: grid;
+    grid-template-columns: 30% 90%;
+    gap: .5em;
+}
+
+.radio > *{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.radio input[type='radio']{
+    width: 1.5em;
+    height: 1.5em;
+
+    accent-color: #0d6efd;
+    cursor: pointer;
+}
+
+.radio label{
+    color: white;
+    cursor: pointer;
+}
+
+footer{
+    position: fixed;
+
+    bottom: 0;
+
+    background-color: #313131;
+    color: #f5f5f5;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+footer a{
+    color: #f5f5f5;
+}

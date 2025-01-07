@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Include the css file -->
+     <link rel="stylesheet" href="main/toasts.css">
+
+    <!-- Include jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <title>Example</title>
+</head>
+<body>
+
+    <div class="buttons">
+        <button class="new_toast" id="common_btn">Add common toast</button>
+        <button class="new_toast" id="icon_btn">Add toast with icon</button>
+    </div>
+
+    <div class="settings">
+
+        <input type="hidden" id="toast_color" value="#0d6efd">
+
+        <div class="colors">
+            <button class="primary" onclick="document.querySelector('#custom').style.display ='none'; set_color('primary')">Primary</button>
+            <button class="success" onclick="document.querySelector('#custom').style.display ='none'; set_color('success')">Success</button>
+            <button class="danger" onclick="document.querySelector('#custom').style.display ='none'; set_color('danger')">Danger</button>
+            <button class="warning" onclick="document.querySelector('#custom').style.display ='none'; set_color('warning')">Warning</button>
+            <button class="info" onclick="document.querySelector('#custom').style.display ='none'; set_color('info')">Info</button>
+            <button style="background-color: #6c757d;" id="custom_color">Custom</button>
+            <input type="color" name="custom" id="custom" oninput="set_color(this.value)">
+        </div>
+
+    </div>
+
+    <div class="toast-queue" id="queue">
+    </div>
+
+    <footer>
+        <div>
+            <p>&copy; Henrique Ailer 2024 - All rights reserved</p>
+            <p>Project at - <a href="https://github.com/Ailer-h/toasts" target=”_blank”>https://github.com/Ailer-h/toasts</a></p>
+        </div>
+    </footer>
+</body>
+
+<!-- Include the js file -->
+<script src="main/toasts.js"></script>
+
+<script>
+
+    var first_use = true;
+
+    function set_color(color){
+
+        document.querySelectorAll('.new_toast').forEach(btn =>{
+            
+            btn.classList = "new_toast";
+            btn.style.backgroundColor = null;
+
+            if(std_colors.includes(color)){
+                btn.classList.add(color)
+            
+            }else{
+                btn.style.backgroundColor = color;
+
+            }
+            
+        })
+
+        document.querySelector("#toast_color").value = color;
+
+    }
+
+    document.querySelector("#custom_color").addEventListener("click", function(){
+        document.querySelector('#custom').style.display =' block';
+
+        if(!first_use){
+            set_color(document.getElementById('custom').value);
+        }
+
+        first_use = false;
+
+    })
+
+    document.querySelector("#common_btn").addEventListener("click", function(){
+
+        $("button").prop("disabled", true);
+
+        if($("#queue").find('div').length <= 0){
+            place_toast("toast_common_1", "queue", "common");
+
+        }
+
+        toast_common_1 = new Toast("toast_common_1");
+
+        toast_common_1.setContents("Hey, new toast here!", " toast was generated with code");
+        toast_common_1.setBgColor(document.getElementById('toast_color').value);
+
+        toast_common_1.show(2000);
+
+        setTimeout(() => {
+            $("#queue").html("");
+            $("button").prop("disabled", false);
+        }, 2000);
+
+    })
+
+    document.querySelector("#icon_btn").addEventListener("click", function(){
+        
+        $("button").prop("disabled", true);
+
+        if($("#queue").find('div').length <= 0){
+            place_toast("toast_icon_1", "queue", "icon");
+
+        }
+        
+        toast_icon_1 = new Toast("toast_icon_1");
+
+        toast_icon_1.setContents("Hey, new toast here!", " toast was generated with code");
+        toast_icon_1.setBgColor(document.getElementById('toast_color').value);
+
+        toast_icon_1.show(2000);
+
+        setTimeout(() => {
+            $("#queue").html("");
+            $("button").prop("disabled", false);
+        }, 2000);
+        
+    })
+
+</script>
+</html>
